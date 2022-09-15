@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #background {
+        background-color: black;
+        width: 200px;
+        height: 200px;
+    }
+    
+    #direz {
+        background-color: red;
+        height: 40px;
+        width: 40px;
+        position: absolute;
+    }
+    
+    button {
+        height: 40px;
+        width: 40px;
+        font-size: 1cm;
+        text-align: center;
+        line-height: 0.1cm;
+    }
+    
+    #score {
+        font-size: 1cm;
+    }
+</style>
+<script>
+    let score = 0;
+
+function start() {
+    let divs = document.getElementsByName("re")
+    su = 8;
+    sin = 8;
+    for (let i = 0; i < 9; i++) {
+        if (i % 3 == 0 && i != 0) {
+            su += 80
+            divs[i].style.top = su + 'px'
+            sin = 8
+        }
+        divs[i].style.left = sin + 'px'
+        divs[i].style.top = su + 'px'
+        sin += 80
+    }
+}
+
+function ScoreChange(n) {
+    let text = document.getElementById("score");
+    switch (n) {
+        case 0:
+            score += 1;
+            text.innerHTML = "Score: " + score;
+            break;
+        case 1:
+            score -= 1;
+            text.innerHTML = "Score: " + score;
+            break;
+        case 2:
+            score -= 1;
+            text.innerHTML = "Score: " + score;
+            break;
+        case 3:
+            score += 1;
+            text.innerHTML = "Score: " + score;
+            break;
+    }
+}
+</script>
+
+<body onload="start()">
+    <div id="background">
+        <div id="direz" name="re"></div>
+        <div id="direz" name="re"><button onclick="ScoreChange(0)">↑</button></div>
+        <div id="direz" name="re"></div>
+        <div id="direz" name="re"><button onclick="ScoreChange(1)">←</button></div>
+        <div id="direz" name="re"></div>
+        <div id="direz" name="re"><button onclick="ScoreChange(2)">→</button></div>
+        <div id="direz" name="re"></div>
+        <div id="direz" name="re"><button onclick="ScoreChange(3)">↓</button></div>
+        <div id="direz" name="re"></div>
+    </div>
+    <p id="score"> Score: 0</p>
+</body>
+
+</html>
