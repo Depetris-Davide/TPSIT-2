@@ -29,12 +29,17 @@
         line-height: 0.1cm;
     }
     
-    #score {
+    #oriz {
+        font-size: 1cm;
+    }
+
+    #vert {
         font-size: 1cm;
     }
 </style>
 <script>
-    let score = 0;
+    let score1 = 0;
+    let score2 = 0;
 
 function start() {
     let divs = document.getElementsByName("re")
@@ -53,23 +58,24 @@ function start() {
 }
 
 function ScoreChange(n) {
-    let text = document.getElementById("score");
+    let text1 = document.getElementById("oriz");
+    let text2 = document.getElementById("vert");
     switch (n) {
         case 0:
-            score += 1;
-            text.innerHTML = "Score: " + score;
+            score1 += 1;
+            text1.innerHTML = "Score: " + score1;
             break;
         case 1:
-            score -= 1;
-            text.innerHTML = "Score: " + score;
+            score2 += 1;
+            text2.innerHTML = "Score: " + score2;
             break;
         case 2:
-            score -= 1;
-            text.innerHTML = "Score: " + score;
+            score2 += 1;
+            text2.innerHTML = "Score: " + score2;
             break;
         case 3:
-            score += 1;
-            text.innerHTML = "Score: " + score;
+            score1 += 1;
+            text1.innerHTML = "Score: " + score1;
             break;
     }
 }
@@ -87,7 +93,8 @@ function ScoreChange(n) {
         <div id="direz" name="re"><button onclick="ScoreChange(3)">↓</button></div>
         <div id="direz" name="re"></div>
     </div>
-    <p id="score"> Score: 0</p>
+    <p id="oriz"> Score: 0</p>
+    <p id="vert"> Score: 0</p>
 </body>
 
 </html>
